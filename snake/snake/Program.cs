@@ -16,32 +16,25 @@ namespace snake
             HorizontalLine DownLine = new HorizontalLine(0, 78, 24, '+');
             VerticalLine LeftLine = new VerticalLine(0, 24, 0, '+');
             VerticalLine RightLine = new VerticalLine(0, 24, 78, '+');
-            upLine.Drow();
-            DownLine.Drow();
-            LeftLine.Drow();
-            RightLine.Drow();
+            upLine.Draw();
+            DownLine.Draw();
+            LeftLine.Draw();
+            RightLine.Draw();
 
             Point p = new Point(4, 5, '*');
             Snake Snake = new Snake(p, 4 , Direction.RIGHT);
-            Snake.Drow();
-            Snake.Move();
-            Thread.Sleep(300);
-            Snake.Move();
-            Thread.Sleep(300);
-            Snake.Move();
-            Thread.Sleep(300);
-            Snake.Move();
-            Thread.Sleep(300);
-            Snake.Move();
-            Thread.Sleep(300);
-            Snake.Move();
-            Thread.Sleep(300);
-            Snake.Move();
-            Thread.Sleep(300);
-            Snake.Move();
-            Thread.Sleep(300);
+            Snake.Draw();
 
-            Console.ReadLine();
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    Snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(100);
+                Snake.Move();
+            }
         }
     }
 }
